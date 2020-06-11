@@ -27,12 +27,13 @@ public class CatPlayer : MonoBehaviour
                 transform.position.z + 3f * Time.deltaTime);
 
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.DownArrow)) { 
+
             Debug.Log("뒤로~");
             transform.position = new Vector3(
                 transform.position.x,
                 transform.position.y,
-                transform.position.z - 3f*Time.deltaTime);
+                transform.position.z - 3f * Time.deltaTime);
         }
     }
 }

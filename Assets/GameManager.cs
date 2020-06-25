@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using unityEngine.UI;
-using unityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,40 +10,45 @@ public class GameManager : MonoBehaviour
     public Text timeText;            //생존 시간 표시
     public Text recordText;          //최고 기록 표시
 
-    private float survivetime;
-    private bool isgameover;
+    private float surviveTime;
+    private bool isGameover;
 
     void Start()
     {
-        survivetime = 0;
-        isgameover = false;
+        surviveTime = 0;
+        isGameover = false;
     }
-
     void update()
     {
-        if (!isgameover)
+        if (!isGameover)
         {
-            survivetime += time.deltatime;
-            timeText.text = "time: " + (int)survivetime;
+            surviveTime += Time.deltaTime;
+            timeText.text = "time: " + (int)surviveTime;
         }
         else
-    }
-            if (Input.GetKey(KeyCode.R)) {
-               SceneManager.LoadScene("SampleScane");
+        {
+
+            if (Input.GetKey(KeyCode.R))
+            {
+                SceneManager.LoadScene("Cartoon Cat");
+            }
         }
-    // Update is called once per frame
-
-       public void EndGame()  {
-    isGameover = true;
-    gameoverText.SetActive(true);
-
-    float bestTime = PlayerPrefs.GetFloat("BestTime");
-
-    if (surviveTime > bestTime) {
-        bestTime = surviveTime;
-
-        PlayerPrefs.SetFloat("BestTime", bestTime);
     }
 
-    recordText.text = "Best Time: " + (int)bestTime;
+    public void EndGame()
+    {
+        isGameover = true;
+        gameoverText.SetActive(true);
+
+        float bestTime = PlayerPrefs.GetFloat("BestTime");
+
+        if (surviveTime > bestTime)
+        {
+            bestTime = surviveTime;
+
+            PlayerPrefs.SetFloat("BestTime", bestTime);
+        }
+
+        recordText.text = "Best Time: " + (int)bestTime;
     }
+}
